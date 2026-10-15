@@ -1,5 +1,4 @@
 import time
-import copy
 
 LIGHT_CYCLE_ORDER = ['North', 'South', 'East', 'West']
 
@@ -30,8 +29,7 @@ def run_serial(zones, steps, log_callback=None):
         zone.traffic_light.manual_control = True # Ensure manual override is enabled
 
     for step in range(steps):
-        # 🔁 Rebuild zones map every step to stay in sync with any internal zone object changes
-        # This is particularly important if Zone objects are modified in place within simulate_step
+      
         zones_map = {z.name: z for z in zones} 
 
         # --- TRAFFIC LIGHT COORDINATION ---
@@ -48,18 +46,7 @@ def run_serial(zones, steps, log_callback=None):
                               LIGHT_CYCLE_ORDER[(current_light_phase_index + 2) % len(LIGHT_CYCLE_ORDER)]]:
                 if zone_name in zones_map: # Safety check
                     zones_map[zone_name].traffic_light.set_state('yellow')
-                    # The yellow light transition happens within TrafficLight.update() if not manual,
-                    # but here we are manually setting. So we need to ensure the yellow phase is handled.
-                    # For simplicity of central control, we'll immediately transition to red after yellow_duration
-            
-            # Allow for yellow light duration (simulated as immediate transition after green)
-            # This is a simplification. In a real-time system, yellow phase would persist for yellow_duration.
-            # Given the current setup, we need to advance the overall cycle here.
-            # A more advanced light coordination might involve a separate timer for yellow phase,
-            # or allowing TrafficLight.update() to run fully if not manual_control.
-            # For this central coordination, we effectively "skip" a step for yellow by immediately
-            # calculating the next green phase and applying it.
-            
+                   
             # Advance to next phase
             current_light_phase_index = (current_light_phase_index + 1) % len(LIGHT_CYCLE_ORDER)
 

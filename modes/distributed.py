@@ -1,5 +1,5 @@
 try:
-    from mpi44py import MPI # Corrected typo: mpi4py
+    from mpi4py import MPI
     MPI_AVAILABLE = True
 except ImportError:
     MPI = None

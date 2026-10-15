@@ -1,0 +1,7 @@
+# Core Dependencies
+# Note: mpi4py requires an underlying MPI implementation (OpenMPI or MPICH).
+# On Linux / Debian / Ubuntu: sudo apt install libopenmpi-dev openmpi-bin
+# On Windows: Microsoft MPI (MS-MPI) SDK or run inside WSL2 / Linux VM (Recommended)
+mpi4py>=3.1.5
+
+# GUI and CLI utilize Python standard library modules (tkinter, multiprocessing, argparse).

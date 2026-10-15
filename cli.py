@@ -47,10 +47,7 @@ def create_zones(zone_names):
     return zones, zone_config_output
 
 def populate_vehicles(zones, vehicle_count):
-    """
-    Creates vehicles, assigns them origin/destination zones, and finds a valid route.
-    Ensures vehicles have correct origin-to-destination paths.
-    """
+    """Creates vehicles, assigns them origin/destination zones, and finds a valid routeEnsures vehicles have correct origin-to-destination paths """
     def find_route_bfs(start_zone, end_zone):
         visited = set()
         queue = deque([(start_zone, [start_zone])])
@@ -270,7 +267,6 @@ def run_simulation(zone_names, vehicles, steps, mode, seed=None, log_callback=No
         if log_callback:
             log_callback(f"Worker process completed task (no master output).\n")
         return [], None, None, None, 0.0 # Ensure duration is returned as 0.0 for worker processes
-
 def main_cli():
     """Main function for the command-line interface."""
     parser = argparse.ArgumentParser(description="Smart City Traffic Flow Simulation")
