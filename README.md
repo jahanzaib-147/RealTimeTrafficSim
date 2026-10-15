@@ -121,7 +121,7 @@ sudo apt install -y build-essential libopenmpi-dev openmpi-bin
 
 ### 3. Clone & Install Python Dependencies
 ```bash
-git clone https://github.com/jahanzaib-147/urbanflow-hpc.git
+git clone https://github.com/jahanzaib-147/RealTimeTrafficSim.git
 cd urbanflow-hpc
 
 # Create and activate virtual environment
